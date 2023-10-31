@@ -1,0 +1,133 @@
+
+<b>Presonal details</b>
+<b>First Name</b><input type="text" [(ngModel)]="firstName"
+(blur)="verifyFirstName($event)"/><br>
+<b>Last Name</b><input type="text" [(ngModel)]="LastName"/><br>
+<b>Age</b><input type="number" [(ngModel)]="age"/><br>
+<b>gender</b><legend>&nbsp;&nbsp;
+<input type="radio" [(ngModel)]="gender" value="Male" name="gender"/>Male<br>
+<input type="radio" [(ngModel)]="gender" value="gender" name="gender"/>Female<br>
+</legend>
+<select size="4" [(ngModel)]="favColor">
+  <option value="red">Red</option>
+  <option value="Violet">Violet</option>
+  <option value="Indigo">Indigo</option>
+  <option value="Sliver">Sliver</option>
+  <option value="Gold">Gold</option>
+
+</select>
+<div [style.color]="favColor">
+     Sample Preview<br>
+     Sample Preview<br>
+     Sample Preview<br>
+
+</div>
+
+<br><input type="checkbox" [(ngModel)]="isEnabled" [value]="isEnabled"/><br>
+
+<div class="theme1">
+sample of theme <br>
+sample of theme <br>
+sample of theme <br>
+sample of theme <br>
+
+</div><br>
+<b>Your Favourite theme</b><br>
+
+<select [(ngModel)]="favTheme">
+  <option value="theme1">oceanic</option>
+  <option value="theme2">Indic</option>
+  <option value="theme3">Bouleard</option>
+  <option value="theme4">Reddington</option>
+</select>
+<!--this is class binding-->
+<div [class]="favTheme">
+  This is the {{favTheme}} theme <br>
+  This is the {{favTheme}} theme <br>
+  This is the {{favTheme}} theme <br>
+  This is the {{favTheme}} theme <br>
+</div>
+
+<!-- property binding
+  [disabled]="!isEnabled"-->
+
+<input type="button" value="Save" [disabled]="!isEnabled" (click)="save()" /><br>
+
+<div style="width:400px;height:500px;">
+  name {{firstName}} &nbsp;{{LastName}} <br>
+  age {{age}}<br>
+  gender {{gender}}<br>
+  favourite color {{favColor}}<br>
+  Enabled {{isEnabled}}
+  </div><br>
+  <input type="checkbox" [value]="isDisplayed" [(ngModel)]="isDisplayed"/>Agree to terms and conditions<br>
+
+  <b *ngIf="isDisplayed"><button>GET PAyment</button></b>
+
+  <b *ngIf="!isDisplayed">Please agree to terms and conditions</b>
+
+  
+
+  <!--using if--else-->
+  <br><br>
+  <input type="checkbox" [value]="YesNo" [(ngModel)]="YesNo"/> Agree to terms & conditions<br>
+  <b *ngIf="YesNo; else dontshow"> <button>Get Payment</button></b>
+  <ng-template #dontshow><b>please agree to terms and conditions</b>
+  </ng-template>
+  <br><br>
+  <b *ngIf="100<200; else notless">100 less than 200</b><br><br>
+  <ng-template #notless><b>not less than 200 </b><br>
+  </ng-template>
+
+  Your salary<input type="number" [(ngModel)]="salary"/>
+  <br><br><b *ngIf="salary>=20000 && salary<=300000; else minsal">Salary is meeting standards</b>
+  <ng-template #minsal><b>Salary not meeting the standards </b></ng-template><br><br>
+
+  <b>total # of employees =</b>{{names.length}}<br>
+  <ol>
+      <li *ngFor="let name of names.reverse()" >
+        {{name}}
+      </li>
+  </ol>
+
+  <ol>
+    <li *ngFor="let name of names.sort()" >
+      {{name}}
+    </li>
+</ol>
+  
+<b>List of cities</b><br>
+<select size="1" [(ngModel)]="location">
+  <option value="Jaipur">Jaipur </option>
+  <option value="hyderabad">hyderabad</option>
+  <option value="vijyawada">vijyawada</option>
+  <option value="Banglore">Banglore</option>
+  <option value="mumbai">mumbai</option>
+  <option value="chennai">chennai</option>
+</select><br>
+<p [ngSwitch]="location">
+  <b *ngSwitchCase="'hyderabad'"> your location is nizam city </b>
+  <b *ngSwitchCase="'vijyawada'"> your location is Traditional city </b>
+  <b *ngSwitchCase="'Banglore'"> your location is Garden city </b>
+  <b *ngSwitchCase=" 'mumbai'"> your location is Dream city </b>
+  <b *ngSwitchCase="'chennai'"> your location is Classical city </b>
+  <b *ngSwitchCase="'Jaipur'"> your location ispink city  </b>
+  <b *ngSwitchDefault>your location isdifferent city</b>
+
+</p>
+
+<input type="checkbox" [(ngModel)]="background"/>Want a background color ?
+<div style="width: 400px;height: 500px" [style.background]="background ? 'red':'yellow' ">
+  <b>background bacground background</b>
+  <b>background bacground background</b>
+  <b>background bacground background</b>
+  <b>background bacground background</b>
+
+</div>
+
+
+
+
+
+<router-outlet></router-outlet>
+
